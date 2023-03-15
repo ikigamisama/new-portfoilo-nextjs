@@ -13,6 +13,8 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { Roboto_Mono } from "next/font/google";
 import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
+import Contact from "@/components/Contact";
 
 const font_roboto_mono = Roboto_Mono({
   subsets: ["latin"],
@@ -68,6 +70,8 @@ export default function Home() {
       <Main colorMode={colorMode} toggleColorMode={toggleColorMode} />
       <About colorMode={colorMode} />
       <Skills colorMode={colorMode} />
+      <Projects colorMode={colorMode} />
+      <Contact colorMode={colorMode} />
 
       <CornerInfo positionorient="left">
         <CornerWrapper isscrolldown={isScrollDown.toString()}>
