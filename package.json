@@ -1,20 +1,40 @@
 {
-  "name": "src",
+  "name": "ikigami-website",
+  "description": "Official Website of Franz Monzales Web Develop / Data analytics",
+  "author": "Franz Monzales / Ikigami Ryoda",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "prettier": "prettier -write .",
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.17",
+    "@chakra-ui/react": "^2.5.1",
+    "@emotion/babel-plugin": "^11.10.6",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@types/node": "18.15.2",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "eslint": "^8.36.0",
+    "eslint-config-next": "^13.2.4",
+    "framer-motion": "^10.2.5",
     "next": "13.2.4",
+    "prettier": "^2.8.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-ga": "^3.3.1",
+    "react-typing-effect": "^2.0.5",
     "typescript": "4.9.5"
+  },
+  "devDependencies": {
+    "@types/react-typing-effect": "^2.0.3",
+    "eslint": "^8.23.1",
+    "eslint-config-next": "^12.3.0",
+    "prettier": "^2.7.1"
   }
 }
