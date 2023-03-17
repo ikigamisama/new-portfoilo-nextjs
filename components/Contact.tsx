@@ -15,7 +15,7 @@ export default function Contact({ colorMode }: any) {
     <Box as="section" py="75" position="relative">
       <MainSectionVidWrap>
         <VideoSkillsSection
-          src={"projects.mp4"}
+          src={"contacts.mp4"}
           autoPlay
           loop
           muted

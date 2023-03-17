@@ -1,3 +1,4 @@
+import { FIELD_LIST } from "@/libs/includes";
 import {
   BGMainSection,
   ContentIntroText,
@@ -34,12 +35,6 @@ const font_lato = Lato({
 
 const FADE_INTERVAL_MS = 1500;
 const WORD_CHANGE_INTERVAL_MS = FADE_INTERVAL_MS * 2;
-const FIELD_LIST = [
-  "Front End Developer",
-  "Back End Developer",
-  "Full Stack Developer",
-  "Data Analytics Student",
-];
 
 type FadeProp = { fade: "fade-in-text" | "fade-out-text" };
 

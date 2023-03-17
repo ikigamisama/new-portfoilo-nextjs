@@ -1,3 +1,4 @@
+import { workHistory } from "@/libs/includes";
 import {
   AboutButtonTabList,
   AboutMeHeadingText,
@@ -41,59 +42,11 @@ const font_space_lato = Lato({
   variable: "--font_lato",
 });
 
-const workHistory = [
-  {
-    name: "Maligaya Taxi",
-    duration: "Feb 2017 - Sept 2018",
-    position: "IT Staff / Web Developer",
-    description: [
-      "The Information Technology (IT) staff is responsible for the smooth operation of the company’s computer systems. They install and maintain software, hardware and networks.",
-      "They also provide support to users and train them on how to use the different systems. The IT staff is also responsible for ensuring that the company’s data is secure.",
-      "IT staff must constantly keep up with new trends and developments to ensure that their organization’s systems are up to date.",
-      "IT staff often train users on how to use new computer systems and software. With the ever-changing landscape of technology,",
-    ],
-  },
-  {
-    name: "Applicable Limited",
-    duration: "Oct 2018 - Oct 2019",
-    position: "Web Developer (Front End)",
-    description: [
-      "Determining the structure and design of web pages. ",
-      "Ensuring user experience determines design choices.",
-      "Developing features to enhance the user experience.",
-      "Optimizing web pages for maximum speed and scalability.",
-    ],
-  },
-  {
-    name: "Flatworld Solutions",
-    duration: "Mar 2020 - Dec 2020",
-    position: "Web Developer (Full Stack)",
-    description: [
-      "Developing front end and back end website architecture.",
-      "Designing user interactions on web pages.",
-      "Web developer should have a strong understanding of web standards and accessibility.",
-      "Ensuring responsiveness of applications.",
-      "Meeting both technical and consumer needs.",
-    ],
-  },
-  {
-    name: "Acquirely",
-    duration: "July 2021 - Feb 2023",
-    position: "Web Developer (Front End)",
-    description: [
-      "Develop new user-facing features",
-      "Build reusable code and libraries for future use",
-      "Ensure the technical feasibility of UI/UX designs",
-      "Optimize application for maximum speed and scalability",
-      "Translating design in Figma to reusable components",
-    ],
-  },
-];
 export default function About({ colorMode }: any) {
   const [currentTabActive, setCurrentTabActive] = useState(0);
 
   return (
-    <Box as="section" py="100">
+    <Box as="section" py="50">
       <Container maxW="container.xl">
         <SecTitleText className={font_roboto.className} theme={colorMode}>
           &#60;about-me&#62;
@@ -167,7 +120,10 @@ export default function About({ colorMode }: any) {
               if (currentTabActive === i) {
                 return (
                   <Box px={4} key={i}>
-                    <WorkTitleHeadText className={font_space_lato.className}>
+                    <WorkTitleHeadText
+                      theme={colorMode}
+                      className={font_space_lato.className}
+                    >
                       {list.position}
                       <WorkTitleCompanyText>
                         {" "}
