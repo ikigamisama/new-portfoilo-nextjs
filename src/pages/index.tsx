@@ -76,11 +76,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Loading loader={loaderFunc} colorMode={colorMode} />
-      <Main
-        colorMode={colorMode}
-        toggleColorMode={toggleColorMode}
-        id="main_section"
-      />
+      <Main colorMode={colorMode} toggleColorMode={toggleColorMode} />
       <About colorMode={colorMode} />
       <Skills colorMode={colorMode} />
       <Projects colorMode={colorMode} />
@@ -191,7 +187,12 @@ export default function Home() {
         </CornerWrapper>
       </CornerInfo>
 
-      <ButtonFloatScrollUp isscrolldown={isScrollFloatDown.toString()}>
+      <ButtonFloatScrollUp
+        isscrolldown={isScrollFloatDown.toString()}
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+      >
         <svg
           stroke="currentColor"
           fill="currentColor"
