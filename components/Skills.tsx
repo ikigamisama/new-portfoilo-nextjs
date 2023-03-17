@@ -32,7 +32,7 @@ export default function Skills({ colorMode }: any) {
   const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()]);
 
   return (
-    <Box as="section" py="25" position="relative">
+    <Box as="section" py="25" position="relative" id="skills">
       <Container maxW="container.xl">
         <SecTitleText className={font_roboto.className} theme={colorMode}>
           &#60;skills&#62;
@@ -83,7 +83,7 @@ export default function Skills({ colorMode }: any) {
         </Box>
 
         {skillsets.map((skills, d) => (
-          <>
+          <Box key={d}>
             <SkillsCardTitleText
               className={font_space_mono.className}
               theme={colorMode}
@@ -92,7 +92,7 @@ export default function Skills({ colorMode }: any) {
             </SkillsCardTitleText>
             <Grid templateColumns="repeat(4, 1fr)" gap={12} my={10} w="100%">
               {skills.list.map((lists, s) => (
-                <GridItem>
+                <GridItem key={s}>
                   <SKillsCard theme={colorMode}>
                     <Center>
                       <Image
@@ -110,7 +110,7 @@ export default function Skills({ colorMode }: any) {
                 </GridItem>
               ))}
             </Grid>
-          </>
+          </Box>
         ))}
 
         <SecTitleText className={font_roboto.className} theme={colorMode}>

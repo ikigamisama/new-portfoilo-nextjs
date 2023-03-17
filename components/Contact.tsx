@@ -1,5 +1,5 @@
 import { SecTitleText } from "@/styles/About";
-import { MainSectionVidWrap, VideoMainSection } from "@/styles/MainSection";
+import { MainSectionVidWrap } from "@/styles/MainSection";
 import { VideoSkillsSection } from "@/styles/Skills";
 import { Box, Container } from "@chakra-ui/react";
 import { Roboto_Mono } from "next/font/google";
@@ -12,7 +12,7 @@ const font_roboto = Roboto_Mono({
 
 export default function Contact({ colorMode }: any) {
   return (
-    <Box as="section" py="75" position="relative">
+    <Box as="section" py="75" position="relative" id="contact">
       <MainSectionVidWrap>
         <VideoSkillsSection
           src={"contacts.mp4"}
@@ -27,7 +27,7 @@ export default function Contact({ colorMode }: any) {
         </SecTitleText>
 
         <SecTitleText className={font_roboto.className}>
-          &#60;/contacts&#62;
+          &#60;/contact&#62;
         </SecTitleText>
       </Container>
     </Box>

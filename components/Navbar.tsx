@@ -1,5 +1,5 @@
 import { HeaderMain, NavHeader, NavLinks, ThemeButton } from "@/styles/Header";
-import { Box, HStack, useColorMode } from "@chakra-ui/react";
+import { Box, HStack } from "@chakra-ui/react";
 import darkLogo from "@/assets/img/main-logo-dark-mode.png";
 import lightLogo from "@/assets/img/main-logo-light-mode.png";
 import Image from "next/image";
@@ -25,19 +25,19 @@ export default function Navbar({ colorMode, toggleColorMode }: any) {
           </a>
         </Box>
         <HStack justifyContent="flex-end" gap={6}>
-          <NavLinks href="#" className={headerFont.className}>
+          <NavLinks href="#home" className={headerFont.className}>
             &#60;home&#62;
           </NavLinks>
-          <NavLinks href="#" className={headerFont.className}>
+          <NavLinks href="#about-me" className={headerFont.className}>
             &#60;about-me&#62;
           </NavLinks>
-          <NavLinks href="#" className={headerFont.className}>
+          <NavLinks href="#skills" className={headerFont.className}>
             &#60;skills&#62;
           </NavLinks>
-          <NavLinks href="#" className={headerFont.className}>
+          <NavLinks href="#projects" className={headerFont.className}>
             &#60;projects&#62;
           </NavLinks>
-          <NavLinks href="#" className={headerFont.className}>
+          <NavLinks href="#contact" className={headerFont.className}>
             &#60;contact&#62;
           </NavLinks>
 

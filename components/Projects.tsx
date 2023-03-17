@@ -10,13 +10,13 @@ const font_roboto = Roboto_Mono({
 
 export default function Projects({ colorMode }: any) {
   return (
-    <Box as="section" py="75" position="relative">
+    <Box as="section" py="75" position="relative" id="projects">
       <Container maxW="container.xl">
-        <SecTitleText className={font_roboto.className}>
+        <SecTitleText className={font_roboto.className} theme={colorMode}>
           &#60;projects&#62;
         </SecTitleText>
 
-        <SecTitleText className={font_roboto.className}>
+        <SecTitleText className={font_roboto.className} theme={colorMode}>
           &#60;/projects&#62;
         </SecTitleText>
       </Container>

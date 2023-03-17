@@ -46,7 +46,7 @@ export default function About({ colorMode }: any) {
   const [currentTabActive, setCurrentTabActive] = useState(0);
 
   return (
-    <Box as="section" py="50">
+    <Box as="section" py="50" id="about-me">
       <Container maxW="container.xl">
         <SecTitleText className={font_roboto.className} theme={colorMode}>
           &#60;about-me&#62;

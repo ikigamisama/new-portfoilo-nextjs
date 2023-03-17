@@ -1,5 +1,7 @@
 import { Button } from '@chakra-ui/react'
 import styled from '@emotion/styled'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
+
 
 
 export const HeaderMain = styled.header`
@@ -18,7 +20,7 @@ export const NavHeader = styled.nav`
     justify-content: space-between;
 `
 
-export const NavLinks = styled.a`
+export const NavLinks = styled(AnchorLink)`
     font-size: 16px;
     color: white;
     line-height: 1;

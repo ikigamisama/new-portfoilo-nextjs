@@ -1,6 +1,7 @@
 import { Box, Button } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 
+
 interface StyleProps {
     isscrolldown: string | undefined
   }
@@ -121,5 +122,30 @@ export const CornerLinkSocials = styled.a<StyleProps>`
     & > svg{
         width: 25px; 
         height: 25px;
+    }
+`
+
+export const ButtonFloatScrollUp = styled.button<StyleProps>`
+    position: fixed;
+    z-index: 100;
+    bottom: 25px;
+    right: 100px;
+    background-color: #3182CE;
+    width: 4rem;
+    height: 4rem;
+    filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+    display:  ${(props) => (props.isscrolldown === 'true' ? 'flex' : 'none')};
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 100%;
+
+    &:hover{
+        filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+    }
+
+    & > svg{
+        width: 30px;
+        height: 30px;
     }
 `

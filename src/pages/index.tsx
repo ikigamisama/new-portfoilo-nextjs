@@ -1,8 +1,6 @@
-import About from "@/components/About";
-import Loading from "@/components/Loading";
-import Main from "@/components/Main";
 import { useColorMode } from "@chakra-ui/react";
 import {
+  ButtonFloatScrollUp,
   CornerInfo,
   CornerLink,
   CornerLinkSocials,
@@ -12,6 +10,9 @@ import {
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { Roboto_Mono } from "next/font/google";
+import About from "@/components/About";
+import Loading from "@/components/Loading";
+import Main from "@/components/Main";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
@@ -25,6 +26,7 @@ export default function Home() {
   const { colorMode, toggleColorMode } = useColorMode();
   const [loaderFunc, setLoaderFunc] = useState(true);
   const [isScrollDown, setIsScrollDown] = useState(false);
+  const [isScrollFloatDown, setIsScrollFloatDown] = useState(false);
 
   const loadingEffectPage = () => {
     const loaderBLock = window.document.getElementById("loader_page");
@@ -47,16 +49,23 @@ export default function Home() {
 
   useEffect(() => {
     const onScroll = (e: any) => {
-      if (e.target.documentElement.scrollTop >= 400 && colorMode === "light") {
-        setIsScrollDown(true);
+      if (e.target.documentElement.scrollTop >= 400) {
+        setIsScrollFloatDown(true);
+        let currentTheme = localStorage.getItem("chakra-ui-color-mode");
+        if (currentTheme === "light") {
+          setIsScrollDown(true);
+        } else {
+          setIsScrollDown(false);
+        }
       } else {
         setIsScrollDown(false);
+        setIsScrollFloatDown(false);
       }
     };
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
-  }, [isScrollDown, colorMode]);
+  }, [isScrollDown]);
 
   return (
     <>
@@ -67,14 +76,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Loading loader={loaderFunc} colorMode={colorMode} />
-      <Main colorMode={colorMode} toggleColorMode={toggleColorMode} />
+      <Main
+        colorMode={colorMode}
+        toggleColorMode={toggleColorMode}
+        id="main_section"
+      />
       <About colorMode={colorMode} />
       <Skills colorMode={colorMode} />
       <Projects colorMode={colorMode} />
       <Contact colorMode={colorMode} />
 
       <CornerInfo positionorient="left">
-        <CornerWrapper isscrolldown={isScrollDown.toString()}>
+        <CornerWrapper isscrolldown={isScrollDown.toString()} theme={colorMode}>
           <CornerLink
             href="mailto:ikigamidevs.15@gmail.com"
             className={font_roboto_mono.className}
@@ -177,6 +190,20 @@ export default function Home() {
           </CornerLinkSocials>
         </CornerWrapper>
       </CornerInfo>
+
+      <ButtonFloatScrollUp isscrolldown={isScrollFloatDown.toString()}>
+        <svg
+          stroke="currentColor"
+          fill="currentColor"
+          strokeWidth="0"
+          viewBox="0 0 512 512"
+          height="1em"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M256 217.9L383 345c9.4 9.4 24.6 9.4 33.9 0 9.4-9.4 9.3-24.6 0-34L273 167c-9.1-9.1-23.7-9.3-33.1-.7L95 310.9c-4.7 4.7-7 10.9-7 17s2.3 12.3 7 17c9.4 9.4 24.6 9.4 33.9 0l127.1-127z"></path>
+        </svg>
+      </ButtonFloatScrollUp>
     </>
   );
 }
