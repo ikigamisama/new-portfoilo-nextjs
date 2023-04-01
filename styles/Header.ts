@@ -32,6 +32,18 @@ export const NavLinks = styled(AnchorLink)`
     }
 `
 
+export const NavLinksOrdinary = styled.a`
+    font-size: 16px;
+    color: white;
+    line-height: 1;
+    padding: 10px 18px;
+    transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+
+    &:hover{
+        color: #3182CE;
+    }
+`
+
 export const ThemeButton = styled(Button)`
     font-width: 400;
     background-color: transparent;

@@ -29,6 +29,26 @@ import postgresqlLogoLight from "@/assets/img/skills/postgresql-light.png";
 import mongodbLogoDark from "@/assets/img/skills/mongodb-dark.png";
 import mongodbLogoLight from "@/assets/img/skills/mongodb-light.png";
 
+import { Lato, Roboto_Mono, Space_Mono } from "next/font/google";
+
+export const font_roboto = Roboto_Mono({
+  weight: ["300", "400", "700"],
+  subsets: ["latin"],
+  variable: "--header-font",
+});
+
+export const font_space_mono = Space_Mono({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font_mono",
+});
+
+export const font_space_lato = Lato({
+  weight: ["400", "700", "900"],
+  subsets: ["latin"],
+  variable: "--font_lato",
+});
+
 export const FIELD_LIST = [
   "Front End Developer",
   "Back End Developer",
@@ -200,5 +220,24 @@ export const skillsets = [
         },
       },
     ],
+  },
+];
+
+export const tabProjectList = [
+  {
+    category: "All",
+    list: [],
+  },
+  {
+    category: "Web2",
+    list: [],
+  },
+  {
+    category: "Web3",
+    list: [],
+  },
+  {
+    category: "Data Analytics",
+    list: [],
   },
 ];

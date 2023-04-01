@@ -1,7 +1,11 @@
 
 import styled from '@emotion/styled'
 
-export const LoaderWrapper = styled.div`
+interface LoaderProps {
+    isload: Boolean | undefined 
+}
+
+export const LoaderWrapper = styled.div<LoaderProps>`
    width: 100%;
    height: 100%;
    position: fixed;

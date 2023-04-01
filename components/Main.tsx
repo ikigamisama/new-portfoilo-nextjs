@@ -1,4 +1,9 @@
-import { FIELD_LIST } from "@/libs/includes";
+import {
+  FIELD_LIST,
+  font_space_lato,
+  font_roboto,
+  font_space_mono,
+} from "@/libs/includes";
 import {
   BGMainSection,
   ContentIntroText,
@@ -11,27 +16,9 @@ import {
   VideoMainSection,
 } from "@/styles/MainSection";
 import { Container, Flex, HStack } from "@chakra-ui/react";
-import { Lato, Roboto_Mono, Space_Mono } from "next/font/google";
 import { useEffect, useState } from "react";
 import ReactTypingEffect from "react-typing-effect";
 import Navbar from "./Navbar";
-
-const font_roboto_mono = Roboto_Mono({
-  subsets: ["latin"],
-  variable: "--font_roboto_mono",
-});
-
-const font_space_mono = Space_Mono({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font_mono",
-});
-
-const font_lato = Lato({
-  weight: ["400", "700", "900"],
-  subsets: ["latin"],
-  variable: "--font_lato",
-});
 
 const FADE_INTERVAL_MS = 1500;
 const WORD_CHANGE_INTERVAL_MS = FADE_INTERVAL_MS * 2;
@@ -77,7 +64,7 @@ export default function Main({ colorMode, toggleColorMode }: any) {
         <Container maxW="container.xl">
           <HStack>
             <Flex flex={1} direction="column">
-              <ContentIntroText className={font_roboto_mono.className}>
+              <ContentIntroText className={font_roboto.className}>
                 Yo, my name is
               </ContentIntroText>
 
@@ -86,7 +73,9 @@ export default function Main({ colorMode, toggleColorMode }: any) {
                 cursorClassName="name-cursor-typing"
                 displayTextRenderer={(text) => {
                   return (
-                    <MainSectionHeadingText className={font_lato.className}>
+                    <MainSectionHeadingText
+                      className={font_space_lato.className}
+                    >
                       {text}
                     </MainSectionHeadingText>
                   );
@@ -99,12 +88,12 @@ export default function Main({ colorMode, toggleColorMode }: any) {
                 {FIELD_LIST[wordOrder]}
               </MainSectionSubHeadingText>
 
-              <MainSectionText className={font_lato.className}>
+              <MainSectionText className={font_space_lato.className}>
                 I'm a full-stack web developer with a passion for developing
                 innovative, user-friendly applications.
               </MainSectionText>
 
-              <ResumeDownloadButton className={font_roboto_mono.className}>
+              <ResumeDownloadButton className={font_roboto.className}>
                 Download My Resume
               </ResumeDownloadButton>
             </Flex>

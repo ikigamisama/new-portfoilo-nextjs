@@ -1,14 +1,15 @@
-import { HeaderMain, NavHeader, NavLinks, ThemeButton } from "@/styles/Header";
+import {
+  HeaderMain,
+  NavHeader,
+  NavLinks,
+  NavLinksOrdinary,
+  ThemeButton,
+} from "@/styles/Header";
 import { Box, HStack } from "@chakra-ui/react";
 import darkLogo from "@/assets/img/main-logo-dark-mode.png";
 import lightLogo from "@/assets/img/main-logo-light-mode.png";
 import Image from "next/image";
-import { Roboto_Mono } from "next/font/google";
-
-const headerFont = Roboto_Mono({
-  subsets: ["latin"],
-  variable: "--header-font",
-});
+import { font_roboto } from "@/libs/includes";
 
 export default function Navbar({ colorMode, toggleColorMode }: any) {
   return (
@@ -25,24 +26,24 @@ export default function Navbar({ colorMode, toggleColorMode }: any) {
           </a>
         </Box>
         <HStack justifyContent="flex-end" gap={6}>
-          <NavLinks href="#home" className={headerFont.className}>
+          <NavLinksOrdinary className={font_roboto.className}>
             &#60;home&#62;
-          </NavLinks>
-          <NavLinks href="#about-me" className={headerFont.className}>
+          </NavLinksOrdinary>
+          <NavLinks href="#about-me" className={font_roboto.className}>
             &#60;about-me&#62;
           </NavLinks>
-          <NavLinks href="#skills" className={headerFont.className}>
+          <NavLinks href="#skills" className={font_roboto.className}>
             &#60;skills&#62;
           </NavLinks>
-          <NavLinks href="#projects" className={headerFont.className}>
+          <NavLinks href="#projects" className={font_roboto.className}>
             &#60;projects&#62;
           </NavLinks>
-          <NavLinks href="#contact" className={headerFont.className}>
+          <NavLinks href="#contact" className={font_roboto.className}>
             &#60;contact&#62;
           </NavLinks>
 
           <ThemeButton
-            className={headerFont.className}
+            className={font_roboto.className}
             onClick={toggleColorMode}
           >
             {colorMode === "dark" ? (

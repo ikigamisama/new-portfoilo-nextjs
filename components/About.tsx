@@ -1,6 +1,12 @@
-import { workHistory } from "@/libs/includes";
+import {
+  font_roboto,
+  font_space_lato,
+  font_space_mono,
+  workHistory,
+} from "@/libs/includes";
 import {
   AboutButtonTabList,
+  AboutImageWrapper,
   AboutMeHeadingText,
   AboutMeImg,
   AboutMeText,
@@ -17,30 +23,9 @@ import {
   HStack,
   List,
   ListIcon,
-  ListItem,
-  UnorderedList,
   VStack,
 } from "@chakra-ui/react";
-import { Lato, Roboto_Mono, Space_Mono } from "next/font/google";
 import { useState } from "react";
-
-const font_roboto = Roboto_Mono({
-  weight: ["300", "400", "700"],
-  subsets: ["latin"],
-  variable: "--header-font",
-});
-
-const font_space_mono = Space_Mono({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font_mono",
-});
-
-const font_space_lato = Lato({
-  weight: ["400", "700", "900"],
-  subsets: ["latin"],
-  variable: "--font_lato",
-});
 
 export default function About({ colorMode }: any) {
   const [currentTabActive, setCurrentTabActive] = useState(0);
@@ -60,11 +45,14 @@ export default function About({ colorMode }: any) {
           py={10}
           mb={10}
         >
-          <Box flex={1}>
+          <AboutImageWrapper flex={1}>
             <AboutMeImg srcimg={"/meh.jpg"} theme={colorMode} />
-          </Box>
+          </AboutImageWrapper>
           <Box flex={1}>
-            <AboutMeHeadingText className={font_space_mono.className}>
+            <AboutMeHeadingText
+              className={font_space_mono.className}
+              theme={colorMode}
+            >
               A simplicity-focused innovator
             </AboutMeHeadingText>
             <AboutMeText className={font_roboto.className}>

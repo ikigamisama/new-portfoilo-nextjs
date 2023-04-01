@@ -1,17 +1,11 @@
-import { AboutMeHeadingText, SecTitleText } from "@/styles/About";
-import { ContactCardWrapper, ContactTextHead } from "@/styles/Contact";
+import { SecTitleText } from "@/styles/About";
+import { ContactTextHead } from "@/styles/Contact";
 import { MainSectionVidWrap } from "@/styles/MainSection";
 import { VideoSkillsSection } from "@/styles/Skills";
-import { Box, Container, HStack, Image } from "@chakra-ui/react";
-import { Roboto_Mono, Space_Mono } from "next/font/google";
+import { Box, Container, Image } from "@chakra-ui/react";
 
 import contactMeImg from "@/assets/img/contact-me.jpg";
-
-const font_roboto = Roboto_Mono({
-  weight: ["300", "400", "700"],
-  subsets: ["latin"],
-  variable: "--header-font",
-});
+import { font_roboto } from "@/libs/includes";
 
 export default function Contact({ colorMode }: any) {
   return (

@@ -9,6 +9,11 @@ export const SecTitleText = styled.h1`
     color: ${(props? : any) => (props.theme === 'light' ? '#202020' : 'white')};
 `
 
+export const AboutImageWrapper = styled(Box)`
+    width: 100%;
+    animation: floatImage 4s ease-in-out infinite;
+`
+
 export const AboutMeImg = styled(Box)`
     animation: morph 8s ease-in-out infinite;
     background-image: url('${(props) => (props.srcimg)}');

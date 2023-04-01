@@ -3,12 +3,10 @@ import styled from '@emotion/styled'
 
 
 export const ContactCardWrapper = styled(Box)`
-width: 100%;
-height: 100%;
-${(props? : any) => (props.theme === 'light' ? 'background-color: white;' : 'background-color: #202020;')};
+    width: 100%;
+    height: 100%;
+    ${(props? : any) => (props.theme === 'light' ? 'background-color: white;' : 'background-color: #202020;')};
 `
-
-
 export const ContactTextHead = styled(Text)`
     font-size: 30px;
     margin-bottom: 25px;

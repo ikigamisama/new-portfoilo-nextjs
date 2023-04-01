@@ -28,12 +28,12 @@ export default function Home() {
   const [isScrollDown, setIsScrollDown] = useState(false);
   const [isScrollFloatDown, setIsScrollFloatDown] = useState(false);
 
-  const loadingEffectPage = () => {
+  const loadingEffectPage = (event: any) => {
     const loaderBLock = window.document.getElementById("loader_page");
     if (loaderBLock !== null) {
-      if (document.readyState === "interactive") {
+      if (event.target.readyState === "interactive") {
         setLoaderFunc(true);
-      } else {
+      } else if (event.target.readyState === "complete") {
         setLoaderFunc(false);
       }
     }
