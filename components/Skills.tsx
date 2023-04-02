@@ -1,4 +1,3 @@
-import { AboutMeText, SecTitleText } from "@/styles/About";
 import {
   Box,
   Center,
@@ -7,32 +6,26 @@ import {
   GridItem,
   Image as ImageCarousel,
 } from "@chakra-ui/react";
-import { Roboto_Mono, Space_Mono } from "next/font/google";
+import {
+  font_roboto,
+  font_space_mono,
+  imageCarousel,
+  skillsets,
+} from "@/libs/includes";
+import { AboutMeText, SecTitleText } from "@/styles/About";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 
-import { imageCarousel, skillsets } from "@/libs/includes";
-
 import { SKillsCard, SkillsCardTitleText } from "@/styles/Skills";
-
-const font_roboto = Roboto_Mono({
-  weight: ["300", "400", "700"],
-  subsets: ["latin"],
-  variable: "--header-font",
-});
-
-const font_space_mono = Space_Mono({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font_mono",
-});
+import SectionDiv from "./sections";
 
 export default function Skills({ colorMode }: any) {
   const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()]);
 
   return (
-    <Box as="section" py="25" position="relative" id="skills">
+    <SectionDiv>
+      <Box id="skills"></Box>
       <Container maxW="container.xl">
         <SecTitleText className={font_roboto.className} theme={colorMode}>
           &#60;skills&#62;
@@ -81,7 +74,6 @@ export default function Skills({ colorMode }: any) {
             </AboutMeText>
           </Box>
         </Box>
-
         {skillsets.map((skills, d) => (
           <Box key={d}>
             <SkillsCardTitleText
@@ -117,6 +109,6 @@ export default function Skills({ colorMode }: any) {
           &#60;/skills&#62;
         </SecTitleText>
       </Container>
-    </Box>
+    </SectionDiv>
   );
 }

@@ -25,13 +25,16 @@ import {
   ListIcon,
   VStack,
 } from "@chakra-ui/react";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import SectionDiv from "./sections";
 
 export default function About({ colorMode }: any) {
   const [currentTabActive, setCurrentTabActive] = useState(0);
 
   return (
-    <Box as="section" py="50" id="about-me">
+    <SectionDiv>
+      <Box id="about-me"></Box>
       <Container maxW="container.xl">
         <SecTitleText className={font_roboto.className} theme={colorMode}>
           &#60;about-me&#62;
@@ -104,49 +107,61 @@ export default function About({ colorMode }: any) {
             </VStack>
           </Box>
           <Box w="75%">
-            {workHistory.map((list, i) => {
-              if (currentTabActive === i) {
-                return (
-                  <Box px={4} key={i}>
-                    <WorkTitleHeadText
-                      theme={colorMode}
-                      className={font_space_lato.className}
+            <AnimatePresence mode="wait">
+              {workHistory.map((list, i) => {
+                if (currentTabActive === i) {
+                  return (
+                    <motion.div
+                      key={i}
+                      initial={{ y: 10, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -10, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
                     >
-                      {list.position}
-                      <WorkTitleCompanyText>
-                        {" "}
-                        @ {list.name}
-                      </WorkTitleCompanyText>
-                    </WorkTitleHeadText>
-                    <WorkTitleDuration className={font_space_mono.className}>
-                      {list.duration}
-                    </WorkTitleDuration>
-
-                    <List>
-                      {list.description.map((descriptionList, ii) => (
-                        <WorkDescriptionText
-                          className={font_roboto.className}
-                          key={ii}
+                      <Box px={4}>
+                        <WorkTitleHeadText
+                          theme={colorMode}
+                          className={font_space_lato.className}
                         >
-                          <ListIcon
-                            as={CheckCircleIcon}
-                            color="#3182CE"
-                            mr={6}
-                          />
-                          {descriptionList}
-                        </WorkDescriptionText>
-                      ))}
-                    </List>
-                  </Box>
-                );
-              }
-            })}
+                          {list.position}
+                          <WorkTitleCompanyText>
+                            {" "}
+                            @ {list.name}
+                          </WorkTitleCompanyText>
+                        </WorkTitleHeadText>
+                        <WorkTitleDuration
+                          className={font_space_mono.className}
+                        >
+                          {list.duration}
+                        </WorkTitleDuration>
+
+                        <List>
+                          {list.description.map((descriptionList, ii) => (
+                            <WorkDescriptionText
+                              className={font_roboto.className}
+                              key={ii}
+                            >
+                              <ListIcon
+                                as={CheckCircleIcon}
+                                color="#3182CE"
+                                mr={6}
+                              />
+                              {descriptionList}
+                            </WorkDescriptionText>
+                          ))}
+                        </List>
+                      </Box>
+                    </motion.div>
+                  );
+                }
+              })}
+            </AnimatePresence>
           </Box>
         </HStack>
         <SecTitleText className={font_roboto.className} theme={colorMode}>
           &#60;/about-me&#62;
         </SecTitleText>
       </Container>
-    </Box>
+    </SectionDiv>
   );
 }
