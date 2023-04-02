@@ -40,7 +40,7 @@ import { Lato, Roboto_Mono, Space_Mono } from "next/font/google";
 export const font_roboto = Roboto_Mono({
   weight: ["300", "400", "700"],
   subsets: ["latin"],
-  variable: "--header-font",
+  variable: "--font_roboto_mono",
 });
 
 export const font_space_mono = Space_Mono({

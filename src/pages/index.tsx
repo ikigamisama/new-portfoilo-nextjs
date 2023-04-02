@@ -7,20 +7,16 @@ import {
   CornerWrapper,
 } from "@/styles/MainSection";
 
+import { font_roboto } from "@/libs/includes";
+
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { Roboto_Mono } from "next/font/google";
 import About from "@/components/About";
 import Loading from "@/components/Loading";
 import Main from "@/components/Main";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
-
-const font_roboto_mono = Roboto_Mono({
-  subsets: ["latin"],
-  variable: "--font_roboto_mono",
-});
 
 export default function Home() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -86,7 +82,7 @@ export default function Home() {
         <CornerWrapper isscrolldown={isScrollDown.toString()} theme={colorMode}>
           <CornerLink
             href="mailto:ikigamidevs.15@gmail.com"
-            className={font_roboto_mono.className}
+            className={font_roboto.className}
             isscrolldown={isScrollDown.toString()}
           >
             ikigamidevs.15@gmail.com

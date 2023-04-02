@@ -74,11 +74,12 @@ export const ResumeDownloadButton = styled(Button)`
     color: white !important;
     padding: 22px !important;
     align-self: flex-start;
+    font-weight: 400;
 
     &:hover{
         color: #202020 !important;
         background-color : white !important;
-      }
+    }
 `
 
 export const CornerInfo = styled(Box)`
