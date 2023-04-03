@@ -20,6 +20,7 @@ import { CheckCircleIcon } from "@chakra-ui/icons";
 import {
   Box,
   Container,
+  Flex,
   HStack,
   List,
   ListIcon,
@@ -28,14 +29,20 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import SectionDiv from "./sections";
+import useMediaQuery from "@/libs/mediaQuery";
 
-export default function About({ colorMode }: any) {
+export default function About({ colorMode, isMobile }: any) {
   const [currentTabActive, setCurrentTabActive] = useState(0);
+
+  const isAboveLarge = useMediaQuery("(max-width: 1024px)");
 
   return (
     <SectionDiv>
       <Box id="about-me"></Box>
-      <Container maxW="container.xl">
+      <Container
+        maxW={isAboveLarge === true ? "container.md" : "container.xl"}
+        px={isMobile === true ? "40px" : "0px"}
+      >
         <SecTitleText className={font_roboto.className} theme={colorMode}>
           &#60;about-me&#62;
         </SecTitleText>
@@ -43,12 +50,12 @@ export default function About({ colorMode }: any) {
         <Box
           w="100%"
           display="flex"
-          flexDirection="row"
+          flexDirection={isMobile === true ? "column" : "row"}
           alignItems="center"
           py={10}
           mb={10}
         >
-          <AboutImageWrapper flex={1}>
+          <AboutImageWrapper flex={1} mb={isMobile === true ? "25px" : "0px"}>
             <AboutMeImg srcimg={"/meh.jpg"} theme={colorMode} />
           </AboutImageWrapper>
           <Box flex={1}>
@@ -91,8 +98,16 @@ export default function About({ colorMode }: any) {
           Work History
         </AboutMeHeadingText>
 
-        <HStack w="100%" alignItems="flex-start" py={50}>
-          <Box w="25%">
+        <Flex
+          w="100%"
+          direction={isMobile === true ? "column" : "row"}
+          alignItems="flex-start"
+          py={50}
+        >
+          <Box
+            w={isMobile === true ? "100%" : "25%"}
+            mb={isMobile === true ? "25px" : "0px"}
+          >
             <VStack>
               {workHistory.map((list, i) => (
                 <AboutButtonTabList
@@ -106,7 +121,7 @@ export default function About({ colorMode }: any) {
               ))}
             </VStack>
           </Box>
-          <Box w="75%">
+          <Box w={isMobile === true ? "100%" : "75%"}>
             <AnimatePresence mode="wait">
               {workHistory.map((list, i) => {
                 if (currentTabActive === i) {
@@ -157,7 +172,7 @@ export default function About({ colorMode }: any) {
               })}
             </AnimatePresence>
           </Box>
-        </HStack>
+        </Flex>
         <SecTitleText className={font_roboto.className} theme={colorMode}>
           &#60;/about-me&#62;
         </SecTitleText>

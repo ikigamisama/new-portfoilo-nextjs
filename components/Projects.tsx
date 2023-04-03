@@ -7,7 +7,7 @@ import {
   ProjectTitleText,
   ProjectTools,
 } from "@/styles/Projects";
-import { Box, Center, Container, HStack, Image } from "@chakra-ui/react";
+import { Box, Center, Container, Flex, HStack, Image } from "@chakra-ui/react";
 import {
   font_roboto,
   font_space_lato,
@@ -17,18 +17,23 @@ import {
 } from "@/libs/includes";
 import { AnimatePresence, motion } from "framer-motion";
 import SectionDiv from "./sections";
+import useMediaQuery from "@/libs/mediaQuery";
 
-export default function Projects({ colorMode }: any) {
+export default function Projects({ colorMode, isMobile }: any) {
   const [currentTab, setCurrentTab] = useState("All");
+  const isAboveLarge = useMediaQuery("(max-width: 1024px)");
   return (
     <SectionDiv>
       <Box id="projects"></Box>
-      <Container maxW="container.xl">
+      <Container
+        maxW={isAboveLarge === true ? "container.md" : "container.xl"}
+        px={isMobile === true ? "40px" : "0px"}
+      >
         <SecTitleText className={font_roboto.className} theme={colorMode}>
           &#60;projects&#62;
         </SecTitleText>
         <Center>
-          <HStack>
+          <Flex direction={isMobile === true ? "column" : "row"}>
             {tabProjectList.map((data, i) => (
               <ProjectTabs
                 key={i}
@@ -42,7 +47,7 @@ export default function Projects({ colorMode }: any) {
                 {data.category}
               </ProjectTabs>
             ))}
-          </HStack>
+          </Flex>
         </Center>
 
         <AnimatePresence mode="wait">
@@ -56,12 +61,18 @@ export default function Projects({ colorMode }: any) {
             {projectList.map((pList, k) => {
               if (currentTab === pList.type || currentTab === "All") {
                 return (
-                  <HStack gap={9} my={12} key={k}>
+                  <Flex
+                    direction={isMobile === true ? "column" : "row"}
+                    gap={9}
+                    my={12}
+                    alignItems="center"
+                    key={k}
+                  >
                     <ProjectListTextAlign
-                      w="65%"
+                      w={isMobile === true ? "100%" : "65%"}
                       aligntext={k % 2 === 0 ? "left" : "right"}
                       alignItems={k % 2 === 0 ? "start" : "end"}
-                      order={k % 2 === 0 ? 1 : 2}
+                      order={isMobile === false ? (k % 2 === 0 ? 1 : 2) : 2}
                     >
                       <ProjectTitleText
                         className={font_space_lato.className}
@@ -72,6 +83,7 @@ export default function Projects({ colorMode }: any) {
                       <ProjectDescriptionText
                         className={font_roboto.className}
                         paragraphalign="right"
+                        ismobile={isMobile.toString()}
                       >
                         {pList.description}
                       </ProjectDescriptionText>
@@ -87,10 +99,13 @@ export default function Projects({ colorMode }: any) {
                         ))}
                       </HStack>
                     </ProjectListTextAlign>
-                    <Box w="35%" order={k % 2 === 0 ? 2 : 1}>
+                    <Box
+                      w={isMobile === true ? "100%" : "35%"}
+                      order={isMobile === false ? (k % 2 === 0 ? 2 : 1) : 1}
+                    >
                       <Image src={pList.image} />
                     </Box>
-                  </HStack>
+                  </Flex>
                 );
               }
             })}

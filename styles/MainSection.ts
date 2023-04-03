@@ -54,7 +54,7 @@ export const MainSectionHeadingText = styled.h2`
 `
 
 export const MainSectionSubHeadingText = styled.h4`
-    font-size: clamp(1rem, 8vw, 2rem);
+    font-size: clamp(1rem, 8vw, 1.2rem);
     font-weight: 700;
     line-height: 1;
     margin-bottom: 25px;
@@ -86,7 +86,7 @@ export const CornerInfo = styled(Box)`
     width: 40px;
     position: fixed;
     bottom: 0px;
-    ${(props) => (props.positionorient === 'left' ? ' left: 40px; right: auto;' : 'right: 40px; left: auto; padding-top: 20px;')};
+    ${(props) => (props.positionorient === 'left' ? ' left: 25px; right: auto;' : 'right: 25px; left: auto; padding-top: 20px;')};
     z-index: 100;
 `
 

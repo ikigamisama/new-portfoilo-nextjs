@@ -7,8 +7,10 @@ import { Box, Container, Image } from "@chakra-ui/react";
 import contactMeImg from "@/assets/img/contact-me.jpg";
 import { font_roboto } from "@/libs/includes";
 import { motion } from "framer-motion";
+import useMediaQuery from "@/libs/mediaQuery";
 
-export default function Contact({ colorMode }: any) {
+export default function Contact({ colorMode, isMobile }: any) {
+  const isAboveLarge = useMediaQuery("(max-width: 1024px)");
   return (
     <Box as="section" position="relative" py="75" id="contact">
       <MainSectionVidWrap>
@@ -30,7 +32,10 @@ export default function Contact({ colorMode }: any) {
           hidden: { y: 100, opacity: 0 },
         }}
       >
-        <Container maxW="container.xl">
+        <Container
+          maxW={isAboveLarge === true ? "container.md" : "container.xl"}
+          px={isMobile === true ? "40px" : "0px"}
+        >
           <SecTitleText className={font_roboto.className}>
             &#60;contact&#62;
           </SecTitleText>

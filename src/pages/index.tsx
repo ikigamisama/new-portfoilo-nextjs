@@ -11,6 +11,7 @@ import { font_roboto } from "@/libs/includes";
 
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import useMediaQuery from "@/libs/mediaQuery";
 import About from "@/components/About";
 import Loading from "@/components/Loading";
 import Main from "@/components/Main";
@@ -24,23 +25,18 @@ export default function Home() {
   const [isScrollDown, setIsScrollDown] = useState(false);
   const [isScrollFloatDown, setIsScrollFloatDown] = useState(false);
 
-  const loadingEffectPage = (event: any) => {
-    const loaderBLock = window.document.getElementById("loader_page");
-    if (loaderBLock !== null) {
-      if (event.target.readyState === "interactive") {
-        setLoaderFunc(true);
-      } else if (event.target.readyState === "complete") {
-        setLoaderFunc(false);
-      }
-    }
-  };
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   useEffect(() => {
-    document.addEventListener("readystatechange", loadingEffectPage);
+    const LOADING_INTERVAL =
+      Math.floor(Math.random() * (Math.floor(2000) - Math.ceil(1500) + 1)) +
+      Math.ceil(1500);
 
-    return () => {
-      document.removeEventListener("readystatechange", loadingEffectPage);
-    };
+    const loaderTimeOut = setTimeout(() => {
+      setLoaderFunc(false);
+    }, LOADING_INTERVAL);
+
+    return () => clearTimeout(loaderTimeOut);
   }, []);
 
   useEffect(() => {
@@ -72,13 +68,20 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Loading loader={loaderFunc} colorMode={colorMode} />
-      <Main colorMode={colorMode} toggleColorMode={toggleColorMode} />
-      <About colorMode={colorMode} />
-      <Skills colorMode={colorMode} />
-      <Projects colorMode={colorMode} />
-      <Contact colorMode={colorMode} />
+      <Main
+        colorMode={colorMode}
+        toggleColorMode={toggleColorMode}
+        isMobile={isMobile}
+      />
+      <About colorMode={colorMode} isMobile={isMobile} />
+      <Skills colorMode={colorMode} isMobile={isMobile} />
+      <Projects colorMode={colorMode} isMobile={isMobile} />
+      <Contact colorMode={colorMode} isMobile={isMobile} />
 
-      <CornerInfo positionorient="left">
+      <CornerInfo
+        positionorient="left"
+        display={isMobile === false ? "block" : "none"}
+      >
         <CornerWrapper isscrolldown={isScrollDown.toString()} theme={colorMode}>
           <CornerLink
             href="mailto:ikigamidevs.15@gmail.com"
@@ -90,7 +93,10 @@ export default function Home() {
         </CornerWrapper>
       </CornerInfo>
 
-      <CornerInfo positionorient="right">
+      <CornerInfo
+        positionorient="right"
+        display={isMobile === false ? "block" : "none"}
+      >
         <CornerWrapper isscrolldown={isScrollDown.toString()}>
           <CornerLinkSocials
             href="https://www.facebook.com/iikigami/"

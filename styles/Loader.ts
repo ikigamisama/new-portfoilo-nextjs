@@ -13,14 +13,16 @@ export const LoaderWrapper = styled.div<LoaderProps>`
    ${(props? : any) => (props.theme === 'light' ? 'background-color: white;' : 'background-color: #202020;')};
    top: 0;
    left: 0;
+   right: 0;
+   bottom: 0;
    z-index: 1000;
    transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
 `
 
 export const RingLoader = styled.div`
     position: absolute;
-    width: 200px;
-    height: 200px;
+    width: 175px;
+    height: 175px;
     border-radius: 50%;
     animation: ring 2s linear infinite;
 `

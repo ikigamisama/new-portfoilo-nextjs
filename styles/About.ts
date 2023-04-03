@@ -15,6 +15,7 @@ export const AboutImageWrapper = styled(Box)`
 `
 
 export const AboutMeImg = styled(Box)`
+    margin: 0 auto;
     animation: morph 8s ease-in-out infinite;
     background-image: url('${(props) => (props.srcimg)}');
     background-position: 50%;
@@ -25,7 +26,8 @@ export const AboutMeImg = styled(Box)`
     height: 30rem;
     position: relative;
     transition: all 1s ease-in-out;
-    width: 30rem;
+    min-width: 20rem;
+    max-width: 30rem;
 `
 
 export const AboutMeHeadingText = styled(Text)`

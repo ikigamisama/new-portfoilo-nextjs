@@ -15,19 +15,24 @@ import {
   ResumeDownloadButton,
   VideoMainSection,
 } from "@/styles/MainSection";
-import { Container, Flex, HStack } from "@chakra-ui/react";
+import { Container, Flex } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ReactTypingEffect from "react-typing-effect";
 import Navbar from "./Navbar";
+import useMediaQuery from "@/libs/mediaQuery";
+import MobileNav from "./MobileNav";
 
 const FADE_INTERVAL_MS = 1500;
 const WORD_CHANGE_INTERVAL_MS = FADE_INTERVAL_MS * 2;
 
 type FadeProp = { fade: "fade-in-text" | "fade-out-text" };
 
-export default function Main({ colorMode, toggleColorMode }: any) {
+export default function Main({ colorMode, toggleColorMode, isMobile }: any) {
   const [fadeProp, setFadeProp] = useState<FadeProp>({ fade: "fade-in-text" });
   const [wordOrder, setWordOrder] = useState(0);
+  const [mobileNavBar, setMobileNavbar] = useState(false);
+
+  const isAboveLarge = useMediaQuery("(max-width: 1024px)");
 
   useEffect(() => {
     const fadeTimeout = setInterval(() => {
@@ -49,7 +54,20 @@ export default function Main({ colorMode, toggleColorMode }: any) {
 
   return (
     <BGMainSection>
-      <Navbar colorMode={colorMode} toggleColorMode={toggleColorMode} />
+      <Navbar
+        colorMode={colorMode}
+        toggleColorMode={toggleColorMode}
+        isMobile={isMobile}
+        onActivateMobile={setMobileNavbar}
+      />
+
+      {isMobile && (
+        <MobileNav
+          colorMode={colorMode}
+          isActivate={mobileNavBar}
+          onActivate={setMobileNavbar}
+        />
+      )}
 
       <MainSectionVidWrap>
         <VideoMainSection
@@ -61,44 +79,42 @@ export default function Main({ colorMode, toggleColorMode }: any) {
       </MainSectionVidWrap>
 
       <MainSectionWrapContent>
-        <Container maxW="container.xl">
-          <HStack>
-            <Flex flex={1} direction="column">
-              <ContentIntroText className={font_roboto.className}>
-                Yo, my name is
-              </ContentIntroText>
+        <Container
+          maxW={isAboveLarge === true ? "container.md" : "container.xl"}
+          px={isMobile === true ? "50px" : "0px"}
+        >
+          <Flex flex={1} direction="column">
+            <ContentIntroText className={font_roboto.className}>
+              Yo, my name is
+            </ContentIntroText>
 
-              <ReactTypingEffect
-                text={["Franz Monzales", "Ikigami Ryoda"]}
-                cursorClassName="name-cursor-typing"
-                displayTextRenderer={(text) => {
-                  return (
-                    <MainSectionHeadingText
-                      className={font_space_lato.className}
-                    >
-                      {text}
-                    </MainSectionHeadingText>
-                  );
-                }}
-              />
+            <ReactTypingEffect
+              text={["Franz Monzales", "Ikigami Ryoda"]}
+              cursorClassName="name-cursor-typing"
+              displayTextRenderer={(text) => {
+                return (
+                  <MainSectionHeadingText className={font_space_lato.className}>
+                    {text}
+                  </MainSectionHeadingText>
+                );
+              }}
+            />
 
-              <MainSectionSubHeadingText
-                className={font_space_mono.className + " " + fadeProp.fade}
-              >
-                {FIELD_LIST[wordOrder]}
-              </MainSectionSubHeadingText>
+            <MainSectionSubHeadingText
+              className={font_space_mono.className + " " + fadeProp.fade}
+            >
+              {FIELD_LIST[wordOrder]}
+            </MainSectionSubHeadingText>
 
-              <MainSectionText className={font_space_lato.className}>
-                I'm a full-stack web developer with a passion for developing
-                innovative, user-friendly applications.
-              </MainSectionText>
+            <MainSectionText className={font_space_lato.className}>
+              I'm a full-stack web developer with a passion for developing
+              innovative, user-friendly applications.
+            </MainSectionText>
 
-              <ResumeDownloadButton className={font_roboto.className}>
-                Download My Resume
-              </ResumeDownloadButton>
-            </Flex>
-            <Flex flex={1}> </Flex>
-          </HStack>
+            <ResumeDownloadButton className={font_roboto.className}>
+              Download My Resume
+            </ResumeDownloadButton>
+          </Flex>
         </Container>
       </MainSectionWrapContent>
     </BGMainSection>

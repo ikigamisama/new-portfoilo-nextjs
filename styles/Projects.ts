@@ -2,7 +2,8 @@ import { Box } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 
 interface ProjectProps {
-    paragraphalign: "left" | "right"
+    paragraphalign: "left" | "right",
+    ismobile: 'true' | 'false'
 }
 
 
@@ -46,8 +47,8 @@ export const ProjectDescriptionText = styled.p<ProjectProps>`
     font-size: 18px;
     letter-spacing: 0.01em;
     margin-bottom: 20px;
-    width: 80%;
     float: ${(props? : any) => (props.paragraphalign)};
+    width: ${(props) => (props.ismobile === 'true' ? '100%' : '80%')};
 `
 
 export const ProjectTools = styled(Box)`

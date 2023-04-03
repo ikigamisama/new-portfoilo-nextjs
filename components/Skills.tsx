@@ -19,21 +19,25 @@ import Image from "next/image";
 
 import { SKillsCard, SkillsCardTitleText } from "@/styles/Skills";
 import SectionDiv from "./sections";
+import useMediaQuery from "@/libs/mediaQuery";
 
-export default function Skills({ colorMode }: any) {
+export default function Skills({ colorMode, isMobile }: any) {
   const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()]);
-
+  const isAboveLarge = useMediaQuery("(max-width: 1024px)");
   return (
     <SectionDiv>
       <Box id="skills"></Box>
-      <Container maxW="container.xl">
+      <Container
+        maxW={isAboveLarge === true ? "container.md" : "container.xl"}
+        px={isMobile === true ? "40px" : "0px"}
+      >
         <SecTitleText className={font_roboto.className} theme={colorMode}>
           &#60;skills&#62;
         </SecTitleText>
         <Box
           w="100%"
           display="flex"
-          flexDirection="row"
+          flexDirection={isMobile === true ? "column" : "row"}
           alignItems="center"
           py={10}
           mb={10}
@@ -82,7 +86,18 @@ export default function Skills({ colorMode }: any) {
             >
               {skills.type}
             </SkillsCardTitleText>
-            <Grid templateColumns="repeat(4, 1fr)" gap={12} my={10} w="100%">
+            <Grid
+              templateColumns={
+                isAboveLarge === false
+                  ? "repeat(4, 1fr)"
+                  : isMobile === true
+                  ? "repeat(1, 1fr)"
+                  : "repeat(2, 1fr)"
+              }
+              gap={12}
+              my={10}
+              w="100%"
+            >
               {skills.list.map((lists, s) => (
                 <GridItem key={s}>
                   <SKillsCard theme={colorMode}>
