@@ -11,6 +11,7 @@ import lightLogo from "@/assets/img/main-logo-light-mode.png";
 import Image from "next/image";
 import { font_roboto } from "@/libs/includes";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import AnchorLink from "react-anchor-link-smooth-scroll-v2";
 
 export default function Navbar({
   colorMode,
@@ -34,22 +35,22 @@ export default function Navbar({
         <HStack
           justifyContent="flex-end"
           gap={6}
-          display={isMobile === false ? "block" : "none"}
+          display={isMobile === false ? "flex" : "none"}
         >
           <NavLinksOrdinary className={font_roboto.className}>
             &#60;home&#62;
           </NavLinksOrdinary>
-          <NavLinks href="#about-me" className={font_roboto.className}>
-            &#60;about-me&#62;
+          <NavLinks className={font_roboto.className}>
+            <AnchorLink href="#about-me">&#60;about-me&#62;</AnchorLink>
           </NavLinks>
-          <NavLinks href="#skills" className={font_roboto.className}>
-            &#60;skills&#62;
+          <NavLinks className={font_roboto.className}>
+            <AnchorLink href="#skills">&#60;skills&#62;</AnchorLink>
           </NavLinks>
-          <NavLinks href="#projects" className={font_roboto.className}>
-            &#60;projects&#62;
+          <NavLinks className={font_roboto.className}>
+            <AnchorLink href="#projects">&#60;projects&#62;</AnchorLink>
           </NavLinks>
-          <NavLinks href="#contact" className={font_roboto.className}>
-            &#60;contact&#62;
+          <NavLinks className={font_roboto.className}>
+            <AnchorLink href="#contact">&#60;contact&#62;</AnchorLink>
           </NavLinks>
 
           <ThemeButton

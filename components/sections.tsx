@@ -13,7 +13,6 @@ export default function SectionDiv({ children }: any) {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
       variants={{
         visible: { y: 0, opacity: 1 },
         hidden: { y: 100, opacity: 0 },
